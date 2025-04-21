@@ -15,30 +15,227 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        .developed-by {
-            margin-top: 90px;
-            /* padding: 20px; */
+        /* Base styles for body and html */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
-
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Content wrapper to ensure footer stays at bottom */
+        .content-wrapper {
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Background image styling */
         .bg-image {
-            height: 100vh !important;
+            flex: 1;
             background: rgba(0, 0, 0, 0.8) url(./assets/img/gla.jpeg);
             background-repeat: no-repeat;
             background-size: cover;
-            /* opacity: 0.8; */
-            /* filter: brightness(75%) saturate(140%); */
+            background-position: center;
             background-blend-mode: darken;
-            width: 100% !important;
-        }
-
-        footer {
-            position: absolute;
             width: 100%;
-            bottom: 0;
+            padding-top: 100px; /* Add padding for fixed navbar */
+            padding-bottom: 30px;
+            position: relative;
+        }
+        
+        /* Heading styles */
+        .heading {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        
+        .heading-hr {
+            width: 120px;
+            margin: auto;
+            background-color: #fff;
+            height: 3px;
+            opacity: 1;
+            border: none;
         }
 
+        /* Contact info styling */
         .contact-info {
             color: #fff !important;
+            margin-bottom: 20px;
+        }
+        
+        .clg-address h1 {
+            margin-bottom: 0;
+        }
+        
+        /* Contact person cards */
+        .contact-person {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-person:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-person img {
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            margin-bottom: 15px;
+        }
+        
+        .contact-person h1 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        /* Developer credit styling */
+        .developed-by {
+            color: #fff;
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px;
+            font-size: 0.9rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        /* Footer styling */
+        footer {
+            background: #f4f6f4;
+            border-top: 1px solid #d3d3d3;
+            padding: 15px 0;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        
+        /* Button styling */
+        .btn-success {
+            margin-top: 10px;
+            background-color: #28a745;
+            border-color: #28a745;
+            transition: all 0.3s;
+        }
+        
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success a {
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        /* Navbar styling */
+        .navbar {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand img {
+            transition: transform 0.3s;
+        }
+        
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 8px 15px;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #28a745;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .navbar-nav {
+                padding: 10px 0;
+            }
+            
+            .nav-link {
+                padding: 10px 15px;
+            }
+            
+            .nav-link:after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .heading {
+                font-size: 2rem;
+            }
+            
+            .bg-image {
+                padding-top: 80px;
+            }
+            
+            .clg-address h1 {
+                font-size: 22px !important;
+            }
+            
+            .contact-person {
+                margin-bottom: 15px;
+            }
+            
+            .contact-info {
+                padding-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .heading {
+                font-size: 1.8rem;
+            }
+            
+            .clg-address h1 {
+                font-size: 18px !important;
+            }
+            
+            .contact-person h1 {
+                font-size: 18px;
+            }
+            
+            .contact-person img {
+                height: 100px;
+                width: 100px;
+            }
+            
+            .developed-by {
+                font-size: 0.8rem;
+                margin-top: 20px;
+            }
         }
     </style>
 </head>
@@ -50,18 +247,18 @@
         <div class="container-fluid">
             <!-- Navbar brand -->
             <a class="navbar-brand" href="#home">
-            <img
-                  src="./assets/img/logo.png"
-                  height="60"
-                  alt="DLF Logo"
-                  loading="lazy"
-                  style="margin-top: -1px;"
+                <img
+                    src="./assets/img/logo.png"
+                    height="60"
+                    alt="GLA Logo"
+                    loading="lazy"
+                    style="margin-top: -1px;"
                 />
-          </a>
+            </a>
             <!-- Toggle button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -94,74 +291,83 @@
                         <a class="nav-link" href="contact.html">Contact Us</a>
                     </li>
                 </ul>
-
+            </div>
+        </div>
     </nav>
 
-    <!-- Contact Us -->
-    <div class="container-fluid bg-image">
-        <div class="text-center" style="padding: 100px 0 50px;">
-            <h1 class="heading" style="color: #fff;">Contact Us</h1>
-            <hr class="heading-hr" style="width: 10%; margin: auto; background-color: #fff;">
-        </div>
-        <div class="contact-info py-5 text-success">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 px-4">
-                    <div class="clg-address text-center">
-                        <h1 class="py-2" style="font-size:30px; font-weight: 600;" data-aos="fade-down" data-aos-delay="500" data-aos-duration="500">GLA UNIVERSITY,</h1>
-                        <h1 class="py-1" style="font-size:25px; font-weight: 600;" data-aos="fade-down" data-aos-delay="500" data-aos-duration="500">17km Stone, NH-2, Mathura-Delhi Road P.O. Chaumuhan,</h1>
-                        <h1 class="pt-1" style="font-size:25px; font-weight: 600;" data-aos="fade-down" data-aos-delay="500" data-aos-duration="500">Mathura-281 406 (U.P.) INDIA</h1>
-                        </h1><br>
-                        <p class="email btn btn-success pt-0" data-aos="fade-down" data-aos-delay="500" data-aos-duration="500">
-                            <a href="mailto:icaapst.phys@gla.ac.in" style="color: #fff;">
-                              Email - icaapst.phys@gla.ac.in &nbsp; <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </a>
-                          </p></div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 d-flex" data-aos="fade-up" data-aos-delay="500" data-aos-duration="500">
-                    <div class="name text-center pt-5 px-5">
-                        <img src="./assets/img/committee/Dr Benoy Kumar Singh.jpg" style="height: 100px; width: 100px; border-radius: 50%; margin-bottom: 10px;" alt="">
-                        <h1 style="font-size: 25px; font-weight: 500;">Dr. Benoy Kumar Singh</h1>
-                        <a class="btn btn-success" href="tel:+919358880465">
-                            +91 9358880465 &nbsp; <i class="fa fa-phone" aria-hidden="true"></i>
-                          </a>
-                          
+    <div class="content-wrapper">
+        <!-- Contact Us -->
+        <div class="container-fluid bg-image">
+            <div class="text-center" style="padding: 50px 0 30px;">
+                <h1 class="heading">Contact Us</h1>
+                <hr class="heading-hr">
+            </div>
+            <div class="contact-info py-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                            <div class="clg-address text-center p-4" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 10px;">
+                                <h1 class="py-2" style="font-size:30px; font-weight: 600; color: #fff;" data-aos="fade-down" data-aos-delay="300" data-aos-duration="500">GLA UNIVERSITY,</h1>
+                                <h1 class="py-1" style="font-size:25px; font-weight: 600; color: #fff;" data-aos="fade-down" data-aos-delay="400" data-aos-duration="500">17km Stone, NH-2, Mathura-Delhi Road P.O. Chaumuhan,</h1>
+                                <h1 class="pt-1" style="font-size:25px; font-weight: 600; color: #fff;" data-aos="fade-down" data-aos-delay="500" data-aos-duration="500">Mathura-281 406 (U.P.) INDIA</h1>
+                                <p class="email mt-4" data-aos="fade-down" data-aos-delay="600" data-aos-duration="500">
+                                    <a href="mailto:icaapst.phys@gla.ac.in" class="btn btn-success">
+                                      Email - icaapst.phys@gla.ac.in &nbsp; <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6 col-sm-12 mb-4">
+                                    <div class="contact-person text-center" data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">
+                                        <img src="./assets/img/committee/Dr Benoy Kumar Singh.jpg" alt="Dr. Benoy Kumar Singh">
+                                        <h1>Dr. Benoy Kumar Singh</h1>
+                                        <a class="btn btn-success w-100" href="tel:+919358880465">
+                                            +91 9358880465 &nbsp; <i class="fa fa-phone" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-4">
+                                    <div class="contact-person text-center" data-aos="fade-up" data-aos-delay="500" data-aos-duration="500">
+                                        <img src="./assets/img/committee/Lokesh-Kumar-Sharma.jpg" alt="Dr. Lokesh Kumar Sharma">
+                                        <h1>Dr. Lokesh Kumar Sharma</h1>
+                                        <a class="btn btn-success w-100" href="tel:+918393941681">
+                                            +91 8393941681 &nbsp; <i class="fa fa-phone" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="name text-center pt-5">
-                        <img src="./assets/img/committee/Lokesh-Kumar-Sharma.jpg" style="height: 100px; width: 100px; border-radius: 50%; margin-bottom: 10px;" alt="">
-                        <h1 style="font-size: 25px; font-weight: 500;">Dr. Lokesh Kumar Sharma</h1>
-                        <a class="btn btn-success" href="tel:+918393941681">+91 8393941681 &nbsp; <i class="fa fa-phone" aria-hidden="true"></i>
-                
-              </a>
+                    
+                    <!-- Website Developed By Section -->
+                    <div class="developed-by mx-auto" style="max-width: 600px;">
+                        Developed By: <a href="https://www.linkedin.com/in/anshul-sharma-711503214/" target="_blank" style="color: #fff; text-decoration: underline;">Anshul Sharma (B-tech CSE(AIML))</a>
                     </div>
-
                 </div>
-                <!-- Website Developed By Section -->
-                <div class="developed-by"> Website Developed By:  Anshul Sharma (3rd Year Btech CSE(AIML))  </div>
             </div>
         </div>
     </div>
-    </div>
-
-
-
 
     <!-- Footer -->
-    <footer class="py-3 text-center" style="background: #F4F6F4; border-top: 1px solid #d3d3d3">
-
-                <div class="container">
+    <footer class="py-3 text-center">
+        <div class="container">
             <div class="row">
-                <div style="text-align: center;">
+                <div class="col-12">
                     Copyright © ACFP 2025. All Rights Reserved.
                 </div>
             </div>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="./assets/js/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            once: true,
+            duration: 800
+        });
     </script>
 </body>
 

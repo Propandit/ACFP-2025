@@ -16,7 +16,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .table {
-            width: 70%;
+            width: 100%;
             margin: auto;
         }
 
@@ -25,6 +25,10 @@
         }
 
         /* property page */
+        .prop-top {
+            position: relative;
+            overflow: hidden;
+        }
 
         .prop-top .zoom-img {
             transition: all 1s;
@@ -44,16 +48,167 @@
             font-size: 40px;
         }
 
+        /* Responsive iframe */
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Side image positioning */
+        .img-container {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .main-img {
+            width: 80%;
+            max-width: 100%;
+            display: block;
+        }
+
+        .side-img {
+            position: absolute;
+            width: 50%;
+            right: 0;
+            bottom: -20px;
+        }
+
+        /* Responsive navigation */
+        .navbar-nav {
+            flex-wrap: wrap;
+        }
+        
+        /* Fix for overlapping text */
+        .section-heading {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: block;
+            clear: both;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .content-text {
+            margin-top: 1.5rem;
+            clear: both;
+            position: relative;
+            z-index: 5;
+        }
+        
+        /* Fix heading positions */
+        .heading {
+            display: block;
+            margin-bottom: 1.5rem;
+            clear: both;
+            position: relative;
+        }
+        
+        .heading-hr {
+            margin-bottom: 2rem !important;
+        }
+        
+        /* Add spacing for sections */
+        section {
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Ensure text doesn't overflow containers */
+        p {
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+
+        /* Media queries for responsiveness */
+        @media(max-width: 992px) {
+            .navbar-nav {
+                gap: 0.2rem;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+        }
+
         @media(max-width: 767px) {
             .prop-head {
                 font-size: 30px;
+            }
+            
+            .prop-location {
+                font-size: 24px;
+            }
+            
+            .main-img {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+            
+            .side-img {
+                position: relative;
+                width: 70%;
+                display: block;
+                margin: 1.5rem auto 0;
+                right: auto;
+                bottom: auto;
+            }
+            
+            .heading {
+                font-size: 28px;
+            }
+            
+            section {
+                padding: 40px 0 25px !important;
+            }
+            
+            /* Additional spacing for mobile */
+            .section-heading {
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .prop-head {
+                font-size: 24px;
+            }
+            
+            .prop-location {
+                font-size: 18px;
+            }
+            
+            .heading {
+                font-size: 24px;
+            }
+            
+            /* Ensure proper spacing on very small screens */
+            .section-heading {
+                padding: 0.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .content-text {
+                margin-top: 1rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
+    <!-- Navbar with fixed top, needs padding for content below -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <!-- Container wrapper -->
         <div class="container-fluid">
@@ -103,18 +258,22 @@
                         <a class="nav-link" href="contact.html">Contact Us</a>
                     </li>
                 </ul>
-
+            </div>
+        </div>
     </nav>
 
-    <section style="margin: 0 0;">
-        <div class="row prop-top" style="position: relative;overflow: hidden;">
+    <!-- Fixed navbar offset -->
+    <div style="padding-top: 80px;"></div>
+
+    <section style="margin: 0 0; padding-top: 0;">
+        <div class="row prop-top">
             <div class="col-12">
                 <a href="./images/property.jpeg">
-                        <img src="./assets/img/prem-mandir.jpeg" class = "img-fluid w-100 zoom-img" alt="">
-                    </a>
+                    <img src="./assets/img/prem-mandir.jpeg" class="img-fluid w-100 zoom-img" alt="Prem Mandir">
+                </a>
             </div>
-            <div class="w-100 h-100" style="background: #303030; opacity: 0.4;position: absolute;top: 0;"> </div>
-            <div class="w-100 h-100" style="position: absolute; top: 0; z-index: 2;color: #fff">
+            <div class="w-100 h-100" style="background: #303030; opacity: 0.4; position: absolute; top: 0;"></div>
+            <div class="w-100 h-100" style="position: absolute; top: 0; z-index: 2; color: #fff">
                 <div class="h-100 w-100 d-flex justify-content-center align-items-center">
                     <div>
                         <p class="h1 prop-head text-center">Prem Mandir</p>
@@ -128,33 +287,18 @@
     <section id="about" style="padding: 100px 0 50px;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 mb-5" style="position: relative">
-                    <img src="./assets/img/prem-mandir.jpeg" class="rounded-4" style="width: 80%" alt="" data-aos="fade" data-aos-delay="200" data-aos-duration="500">
-                    <img src="./assets/img/prem-mandir2.jpg" class="w-50 border border-light border-5 rounded-4 side-img" data-aos="flip-right" data-aos-delay="400" data-aos-duration="500">
+                <div class="col-lg-6 col-md-6 mb-5 img-container">
+                    <img src="./assets/img/prem-mandir.jpeg" class="rounded-4 main-img" alt="" data-aos="fade" data-aos-delay="200" data-aos-duration="500">
+                    <img src="./assets/img/prem-mandir2.jpg" class="border border-light border-5 rounded-4 side-img" data-aos="flip-right" data-aos-delay="400" data-aos-duration="500">
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <h1 class="heading" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">About <span style="color: #000;">Mathura-Vrindavan</span></h1>
+                    <h1 class="heading section-heading" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">About <span style="color: #000;">Mathura-Vrindavan</span></h1>
                     <hr class="heading-hr" style="width: 20%; margin: auto;">
-                    <p style="text-align: justify; margin-top: 25px;" data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">The birth place of Lord Krishna, Mathura is well connected by rail and road and located 140 km South-east of Delhi & 55 km North-west of Agra. Held in sanctity by Hindus, Buddhist & Jain faiths, it has a long & chequered history. The
-                        city is dotted with number of temples, the prominent ones being Krishna Janambhumi and Dwarkadhish. Today, Mathura has spread its wings beyond its formative years and is surrounded by numerous diminutive towns and hamlets. Just
-                        15 kms from Mathura, lies Vrindavan, which is equally enchanting and captivating. There are more than eight thousand temples here, the prominent ones being Bankey Bihari temple, ISKCON, Rangji, Prem mandir, Maa Vaishno temple,
-                        Akshya Patra etc. Goverdhan, the majestic place known for the imposing Goverdhan Mountain, is also close to Mathura. Agra, the city of the Taj Mahal, is just 55 kms from Mathura. In all, the city is worth to visit and it is difficult
-                        not to reminisce the time spent here.</p>
-                    <div class="know-more">
-                        <a href="http://www.uptourism.gov.in/pages/top/explore/mathura-vrindavan" style="color:#fff;" class="btn btn-success btn-lg mt-2" data-aos="fade-right" data-aos-delay="400" data-aos-duration="500">Know
-                            More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="location">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 col-md-7 order-md-1">
-                    <div>
-
+                    <div class="content-text">
+                        <p style="text-align: justify;" data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">The birth place of Lord Krishna, Mathura is well connected by rail and road and located 140 km South-east of Delhi & 55 km North-west of Agra. Held in sanctity by Hindus, Buddhist & Jain faiths, it has a long & chequered history. The city is dotted with number of temples, the prominent ones being Krishna Janambhumi and Dwarkadhish. Today, Mathura has spread its wings beyond its formative years and is surrounded by numerous diminutive towns and hamlets. Just 15 kms from Mathura, lies Vrindavan, which is equally enchanting and captivating. There are more than eight thousand temples here, the prominent ones being Bankey Bihari temple, ISKCON, Rangji, Prem mandir, Maa Vaishno temple, Akshya Patra etc. Goverdhan, the majestic place known for the imposing Goverdhan Mountain, is also close to Mathura. Agra, the city of the Taj Mahal, is just 55 kms from Mathura. In all, the city is worth to visit and it is difficult not to reminisce the time spent here.</p>
+                        <div class="know-more text-center text-md-start">
+                            <a href="http://www.uptourism.gov.in/pages/top/explore/mathura-vrindavan" style="color:#fff;" class="btn btn-success btn-lg mt-2" data-aos="fade-right" data-aos-delay="400" data-aos-duration="500">Know More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -163,63 +307,71 @@
 
     <section id="highlight">
         <div class="container">
-            <h1 class="heading text-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="500">How To <span class="highlight">Reach</span> Us</h1>
+            <h1 class="heading section-heading text-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="500">How To <span class="highlight">Reach</span> Us</h1>
             <hr class="heading-hr mb-5" style="width: 10%; margin: auto;">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d113212.76277019219!2d77.56386419441023!3d27.534601851223318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x3973713973285911%3A0x6e384ca159761c1d!2sMayur%20Vihar%2C%20Mathura%2C%20Uttar%20Pradesh%20281001!3m2!1d27.4843589!2d77.6779499!4m5!1s0x39736ce47bffc039%3A0xfe5fc3da92c6341!2sGLA%20University%2C%20Chaumuhan%2C%20Uttar%20Pradesh!3m2!1d27.605688699999998!2d77.5933245!5e0!3m2!1sen!2sin!4v1667652626602!5m2!1sen!2sin"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d113212.76277019219!2d77.56386419441023!3d27.534601851223318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x3973713973285911%3A0x6e384ca159761c1d!2sMayur%20Vihar%2C%20Mathura%2C%20Uttar%20Pradesh%20281001!3m2!1d27.4843589!2d77.6779499!4m5!1s0x39736ce47bffc039%3A0xfe5fc3da92c6341!2sGLA%20University%2C%20Chaumuhan%2C%20Uttar%20Pradesh!3m2!1d27.605688699999998!2d77.5933245!5e0!3m2!1sen!2sin!4v1667652626602!5m2!1sen!2sin"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div>
-                        <h1 class="heading text-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">Reach By<span style="color: #000;"> Train</span></h1>
+                        <h1 class="heading section-heading text-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">Reach By<span style="color: #000;"> Train</span></h1>
                         <hr class="heading-hr mb-4" style="width: 20%; margin: auto;">
-                        <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">Mathura Junction Station is well connected to various cities of the country. All the trains bound to central INDIA and southern INDIA from Delhi pass through Mathura Junction. The distance from Mathura Junction to GLA University
-                            is 1 km (approx) . From the station one can hire the Taxi/Auto very easily for GLA University.</p>
+                        <div class="content-text">
+                            <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">Mathura Junction Station is well connected to various cities of the country. All the trains bound to central INDIA and southern INDIA from Delhi pass through Mathura Junction. The distance from Mathura Junction to GLA University is 1 km (approx). From the station one can hire the Taxi/Auto very easily for GLA University.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </section>
+    
     <section id="highlight">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
                     <div>
-                        <h1 class="heading text-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">Reach By<span style="color: #000;"> Road</span></h1>
+                        <h1 class="heading section-heading text-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">Reach By<span style="color: #000;"> Road</span></h1>
                         <hr class="heading-hr mb-4" style="width: 20%; margin: auto;">
-                        <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">GLA University is located at 17 km stone from Mathura city on the Mathura-Delhi (NH2) highway. The nearest airport is IGI Airport, Delhi. It is 180 kilometers from the University. One can easily reach GLA University from IGI Airport
-                            via Taxi.</p>
+                        <div class="content-text">
+                            <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">GLA University is located at 17 km stone from Mathura city on the Mathura-Delhi (NH2) highway. The nearest airport is IGI Airport, Delhi. It is 180 kilometers from the University. One can easily reach GLA University from IGI Airport via Taxi.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d901041.0961561474!2d76.79019721387759!3d28.09494301663917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x390d1b9993a248df%3A0x28f954cbf617fd67!2sTerminal%203%2C%20Indira%20Gandhi%20International%20Airport%2C%20New%20Delhi%2C%20Delhi%20110037!3m2!1d28.5550838!2d77.0844015!4m5!1s0x39736ce47bffc039%3A0xfe5fc3da92c6341!2sGLA%20University%2C%20Chaumuhan%2C%20Uttar%20Pradesh!3m2!1d27.605688699999998!2d77.5933245!5e0!3m2!1sen!2sin!4v1667654333129!5m2!1sen!2sin"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d901041.0961561474!2d76.79019721387759!3d28.09494301663917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x390d1b9993a248df%3A0x28f954cbf617fd67!2sTerminal%203%2C%20Indira%20Gandhi%20International%20Airport%2C%20New%20Delhi%2C%20Delhi%20110037!3m2!1d28.5550838!2d77.0844015!4m5!1s0x39736ce47bffc039%3A0xfe5fc3da92c6341!2sGLA%20University%2C%20Chaumuhan%2C%20Uttar%20Pradesh!3m2!1d27.605688699999998!2d77.5933245!5e0!3m2!1sen!2sin!4v1667654333129!5m2!1sen!2sin"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    
     <section id="highlight">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d113197.7544344967!2d77.56212174476686!3d27.54916774499418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x3973716a904a2a97%3A0xc162b76e4a5a85ab!2sNew%20Bus%20Stand%2C%20FMRF%2BVQ9%2C%20Adarsh%20Nagar%2C%20Manoharpura%2C%20Mathura%2C%20Uttar%20Pradesh%20281001!3m2!1d27.4921504!2d77.6744714!4m5!1s0x39736ce47bffc039%3A0xfe5fc3da92c6341!2sGLA%20University%2C%20Chaumuhan%2C%20Uttar%20Pradesh!3m2!1d27.605688699999998!2d77.5933245!5e0!3m2!1sen!2sin!4v1667654455698!5m2!1sen!2sin"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d113197.7544344967!2d77.56212174476686!3d27.54916774499418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x3973716a904a2a97%3A0xc162b76e4a5a85ab!2sNew%20Bus%20Stand%2C%20FMRF%2BVQ9%2C%20Adarsh%20Nagar%2C%20Manoharpura%2C%20Mathura%2C%20Uttar%20Pradesh%20281001!3m2!1d27.4921504!2d77.6744714!4m5!1s0x39736ce47bffc039%3A0xfe5fc3da92c6341!2sGLA%20University%2C%20Chaumuhan%2C%20Uttar%20Pradesh!3m2!1d27.605688699999998!2d77.5933245!5e0!3m2!1sen!2sin!4v1667654455698!5m2!1sen!2sin"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div>
-                        <h1 class="heading text-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">Reach By <span style="color: #000;">Bus</span></h1>
+                        <h1 class="heading section-heading text-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">Reach By <span style="color: #000;">Bus</span></h1>
                         <hr class="heading-hr mb-4" style="width: 20%; margin: auto;">
-                        <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">Mathura is well linked to every main city in Uttar Pradesh and Northern INDIA through a network of State and National Highway. Uttar Pradesh State Road Transport Corporation plies many buses for different cities such as Lucknow,
-                            Kanpur, Agra, Delhi , Jaipur, etc. Luxury coaches are also available that are very comfortable to travel with. The distance from Mathura new Bus Stand to GLA University is 17 km (approx). From the Bus Stand one can board any
-                            bus towards Delhi and get down near 17 km stone from Mathura at the GLA University entrance gate.</p>
+                        <div class="content-text">
+                            <p data-aos="fade-up" data-aos-delay="600" data-aos-duration="500">Mathura is well linked to every main city in Uttar Pradesh and Northern INDIA through a network of State and National Highway. Uttar Pradesh State Road Transport Corporation plies many buses for different cities such as Lucknow, Kanpur, Agra, Delhi, Jaipur, etc. Luxury coaches are also available that are very comfortable to travel with. The distance from Mathura new Bus Stand to GLA University is 17 km (approx). From the Bus Stand one can board any bus towards Delhi and get down near 17 km stone from Mathura at the GLA University entrance gate.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <!-- Footer -->
     <footer class="py-3 text-center" style="background: #F4F6F4; border-top: 1px solid #d3d3d3">
@@ -236,6 +388,12 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+        
+        // Fix for navbar fixed-top covering content
+        document.addEventListener('DOMContentLoaded', function() {
+            const navHeight = document.querySelector('.navbar').offsetHeight;
+            document.body.style.paddingTop = navHeight + 'px';
+        });
     </script>
 </body>
 
