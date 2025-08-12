@@ -1,0 +1,149 @@
+<svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="500" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">
+    LSTM Pipeline for Anomalous Human Activity Recognition (AHAR)
+  </text>
+  
+  <!-- Input Layer -->
+  <rect x="50" y="80" width="120" height="60" fill="#3498db" stroke="#2980b9" stroke-width="2" rx="5"/>
+  <text x="110" y="105" text-anchor="middle" fill="white" font-weight="bold">Real-time</text>
+  <text x="110" y="120" text-anchor="middle" fill="white" font-weight="bold">Video Input</text>
+  
+  <!-- CNN Feature Extraction -->
+  <rect x="220" y="80" width="120" height="60" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" rx="5"/>
+  <text x="280" y="105" text-anchor="middle" fill="white" font-weight="bold">CNN Feature</text>
+  <text x="280" y="120" text-anchor="middle" fill="white" font-weight="bold">Extraction</text>
+  
+  <!-- Feature Sequence -->
+  <rect x="390" y="80" width="120" height="60" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
+  <text x="450" y="100" text-anchor="middle" fill="white" font-weight="bold">Feature</text>
+  <text x="450" y="115" text-anchor="middle" fill="white" font-weight="bold">Sequence</text>
+  <text x="450" y="130" text-anchor="middle" fill="white" font-size="10">(t-n to t)</text>
+  
+  <!-- LSTM Network -->
+  <g id="lstm-network">
+    <!-- LSTM Cell 1 -->
+    <rect x="560" y="60" width="80" height="50" fill="#27ae60" stroke="#229954" stroke-width="2" rx="5"/>
+    <text x="600" y="80" text-anchor="middle" fill="white" font-size="12" font-weight="bold">LSTM</text>
+    <text x="600" y="95" text-anchor="middle" fill="white" font-size="10">Cell 1</text>
+    
+    <!-- LSTM Cell 2 -->
+    <rect x="560" y="120" width="80" height="50" fill="#27ae60" stroke="#229954" stroke-width="2" rx="5"/>
+    <text x="600" y="140" text-anchor="middle" fill="white" font-size="12" font-weight="bold">LSTM</text>
+    <text x="600" y="155" text-anchor="middle" fill="white" font-size="10">Cell 2</text>
+    
+    <!-- LSTM Cell 3 -->
+    <rect x="560" y="180" width="80" height="50" fill="#27ae60" stroke="#229954" stroke-width="2" rx="5"/>
+    <text x="600" y="200" text-anchor="middle" fill="white" font-size="12" font-weight="bold">LSTM</text>
+    <text x="600" y="215" text-anchor="middle" fill="white" font-size="10">Cell n</text>
+    
+    <!-- Hidden States -->
+    <circle cx="680" cy="85" r="15" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="680" y="90" text-anchor="middle" fill="white" font-size="8">h1</text>
+    
+    <circle cx="680" cy="145" r="15" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="680" y="150" text-anchor="middle" fill="white" font-size="8">h2</text>
+    
+    <circle cx="680" cy="205" r="15" fill="#f39c12" stroke="#d68910" stroke-width="2"/>
+    <text x="680" y="210" text-anchor="middle" fill="white" font-size="8">hn</text>
+  </g>
+  
+  <!-- Activity Prediction -->
+  <rect x="740" y="120" width="120" height="60" fill="#e67e22" stroke="#d35400" stroke-width="2" rx="5"/>
+  <text x="800" y="145" text-anchor="middle" fill="white" font-weight="bold">Activity</text>
+  <text x="800" y="160" text-anchor="middle" fill="white" font-weight="bold">Prediction</text>
+  
+  <!-- Anomaly Detection -->
+  <rect x="420" y="300" width="160" height="80" fill="#c0392b" stroke="#a93226" stroke-width="2" rx="5"/>
+  <text x="500" y="325" text-anchor="middle" fill="white" font-weight="bold">Anomaly Detection</text>
+  <text x="500" y="345" text-anchor="middle" fill="white" font-size="12">Threshold Analysis</text>
+  <text x="500" y="360" text-anchor="middle" fill="white" font-size="12">Pattern Comparison</text>
+  <text x="500" y="375" text-anchor="middle" fill="white" font-size="12">Statistical Analysis</text>
+  
+  <!-- Normal Activity Log -->
+  <rect x="200" y="450" width="120" height="60" fill="#27ae60" stroke="#229954" stroke-width="2" rx="5"/>
+  <text x="260" y="475" text-anchor="middle" fill="white" font-weight="bold">Normal</text>
+  <text x="260" y="490" text-anchor="middle" fill="white" font-weight="bold">Activity Log</text>
+  
+  <!-- Anomaly Alert -->
+  <rect x="680" y="450" width="120" height="60" fill="#e74c3c" stroke="#c0392b" stroke-width="2" rx="5"/>
+  <text x="740" y="475" text-anchor="middle" fill="white" font-weight="bold">Anomaly</text>
+  <text x="740" y="490" text-anchor="middle" fill="white" font-weight="bold">Alert/Log</text>
+  
+  <!-- Database -->
+  <ellipse cx="260" cy="580" rx="60" ry="30" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+  <text x="260" y="575" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Database</text>
+  <text x="260" y="590" text-anchor="middle" fill="white" font-size="10">Storage</text>
+  
+  <!-- Alert System -->
+  <ellipse cx="740" cy="580" rx="60" ry="30" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  <text x="740" y="575" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Alert</text>
+  <text x="740" y="590" text-anchor="middle" fill="white" font-size="10">System</text>
+  
+  <!-- Arrows -->
+  <!-- Input to CNN -->
+  <path d="M 170 110 L 220 110" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- CNN to Feature Sequence -->
+  <path d="M 340 110 L 390 110" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Feature Sequence to LSTM -->
+  <path d="M 510 110 L 560 110" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 510 110 L 540 145 L 560 145" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 510 110 L 540 205 L 560 205" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- LSTM to Activity Prediction -->
+  <path d="M 695 145 L 740 145" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Activity Prediction to Anomaly Detection -->
+  <path d="M 800 180 L 800 250 L 500 250 L 500 300" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Anomaly Detection to Normal Log -->
+  <path d="M 450 380 L 450 420 L 260 420 L 260 450" stroke="#27ae60" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="350" y="415" text-anchor="middle" fill="#27ae60" font-size="12" font-weight="bold">Normal</text>
+  
+  <!-- Anomaly Detection to Alert -->
+  <path d="M 550 380 L 550 420 L 740 420 L 740 450" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="650" y="415" text-anchor="middle" fill="#e74c3c" font-size="12" font-weight="bold">Anomaly</text>
+  
+  <!-- Normal Log to Database -->
+  <path d="M 260 510 L 260 550" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Alert to Alert System -->
+  <path d="M 740 510 L 740 550" stroke="#2c3e50" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- LSTM connections (hidden states) -->
+  <path d="M 600 110 L 600 120" stroke="#f39c12" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 600 170 L 600 180" stroke="#f39c12" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
+    </marker>
+  </defs>
+  
+  <!-- Legend -->
+  <g id="legend">
+    <rect x="50" y="620" width="300" height="70" fill="white" stroke="#2c3e50" stroke-width="1" rx="5"/>
+    <text x="60" y="635" font-size="14" font-weight="bold" fill="#2c3e50">Legend:</text>
+    <rect x="60" y="645" width="15" height="10" fill="#3498db"/>
+    <text x="80" y="654" font-size="10" fill="#2c3e50">Input Processing</text>
+    <rect x="160" y="645" width="15" height="10" fill="#27ae60"/>
+    <text x="180" y="654" font-size="10" fill="#2c3e50">LSTM Network</text>
+    <rect x="60" y="665" width="15" height="10" fill="#e74c3c"/>
+    <text x="80" y="674" font-size="10" fill="#2c3e50">Anomaly Detection</text>
+    <rect x="160" y="665" width="15" height="10" fill="#34495e"/>
+    <text x="180" y="674" font-size="10" fill="#2c3e50">Storage/Output</text>
+  </g>
+  
+  <!-- Technical Details Box -->
+  <rect x="650" y="620" width="320" height="70" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1" rx="5"/>
+  <text x="660" y="635" font-size="12" font-weight="bold" fill="#2c3e50">LSTM Architecture Details:</text>
+  <text x="660" y="650" font-size="10" fill="#2c3e50">• Sequential processing of temporal features</text>
+  <text x="660" y="665" font-size="10" fill="#2c3e50">• Long-term dependency retention for activity patterns</text>
+  <text x="660" y="680" font-size="10" fill="#2c3e50">• Real-time anomaly classification and alerting</text>
+</svg>
